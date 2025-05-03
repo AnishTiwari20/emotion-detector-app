@@ -7,7 +7,7 @@ from tensorflow.keras.models import load_model
 app = Flask(__name__)
 
 # Load the trained model
-model = load_model("models/emotion_model.h5")
+model = load_model("models/emotion_model.h5", compile=False)
 
 emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
 
