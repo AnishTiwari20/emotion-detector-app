@@ -1,21 +1,21 @@
-# Core Application (unchanged)
+# Core Application
 Flask==2.2.5
 gunicorn==21.2.0
 
-# Machine Learning & Computer Vision (adjusted)
-tensorflow==2.10.0  # Your required version
-numpy==1.23.5  # TF 2.10.0's official requirement (1.19-1.23)
-opencv-python==4.8.1.78  # Works with NumPy 1.23
-scipy==1.10.1  # Compatible with NumPy 1.23
-pandas==1.5.3  # Last Pandas version fully compatible with NumPy 1.23
-Pillow==10.1.0  # No conflicts
+# Machine Learning & Computer Vision
+tensorflow==2.10.0
+opencv-python==4.8.1.78
+numpy==1.24.0
+scipy==1.10.1
+pandas==2.1.4
+Pillow==10.1.0
 
-# Utilities (unchanged)
+# Utilities
 python-dotenv==1.0.0
 requests==2.31.0
-Werkzeug==2.3.7  # Pinned for Flask 2.2.5
+Werkzeug==2.3.7  # Explicitly pinned for Flask compatibility
 
-# Build Tools (unchanged)
+# Package Management (build/pip)
 pip==23.3.2
 setuptools==68.2.2
 wheel==0.42.0
