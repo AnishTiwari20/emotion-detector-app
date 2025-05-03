@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Detection</title>
+</head>
+<body>
+  <h1>Real-time Emotion Detection</h1>
+  <video id="video" width="480" height="360" autoplay></video>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <p id="emotion">Detecting...</p>
+
+  <script>
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const emotionDisplay = document.getElementById("emotion");
+    const context = canvas.getContext("2d");
+
+    // Get webcam access
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      });
+
+    // Send a frame every 2 seconds
+    setInterval(() => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL("image/jpeg");
+
+      fetch("/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: imageData })
+      })
+      .then(res => res.json())
+      .then(data => {
+        emotionDisplay.textContent = `Emotion: ${data.emotion}`;
+      });
+    }, 2000);
+  </script>
+</body>
+</html>
