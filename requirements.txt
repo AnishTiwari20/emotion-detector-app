@@ -1,6 +1,21 @@
-gunicorn==20.1.0
-Flask==2.0.1
-tensorflow==2.19.0
-opencv-python==4.5.3.56
-numpy==1.21.0
-# other dependencies you need
+# Core Application
+Flask==2.2.5
+gunicorn==21.2.0
+
+# Machine Learning & Computer Vision
+tensorflow==2.15.0
+opencv-python==4.8.1.78
+numpy==1.24.0
+scipy==1.10.1
+pandas==2.1.4
+Pillow==10.1.0
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+Werkzeug==2.3.7  # Explicitly pinned for Flask compatibility
+
+# Package Management (build/pip)
+pip==23.3.2
+setuptools==68.2.2
+wheel==0.42.0
